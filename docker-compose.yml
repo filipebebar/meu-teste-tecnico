@@ -1,0 +1,45 @@
+version: '3.9'
+
+services:
+  api:
+    container_name: project-nest-template
+    ports:
+      - '3000:3000'
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+      args:
+        node_env: dev
+    volumes:
+      - .:/home/project-nest-template
+      - /home/project-nest-template/node_modules
+    depends_on:
+      - postgres
+    links:
+      - postgres
+
+  #  mongo_db:
+  #    container_name: mongo_db
+  #    image: mongo:latest
+  #    restart: always
+  #    ports:
+  #      - '27017:27017'
+  #    environment:
+  #      MONGO_INITDB_USERNAME: root
+  #      MONGO_INITDB_PASSWORD: example
+  #      MONGO_INITDB_DATABASE: local
+
+  postgres:
+    container_name: db_api
+    image: postgres
+    environment:
+      POSTGRES_DB: localapi
+      POSTGRES_USER: localapi
+      POSTGRES_PASSWORD: 123456
+      PGDATA: /data/postgres
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - '5437:5437'
+    network_mode: bridge
+    restart: unless-stopped
