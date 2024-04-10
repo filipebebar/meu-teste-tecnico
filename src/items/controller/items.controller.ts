@@ -1,7 +1,7 @@
-import { ItemsService } from '@/items/service/items.service'
 import { Controller, Get, Param } from '@nestjs/common'
-import { ItemResponse } from '@/items/interface/items.interface'
 import { ApiOperation } from '@nestjs/swagger'
+import { ItemsService } from '../service/items.service'
+import { ItemResponse } from '../interface/items.interface'
 
 @Controller('items')
 export class ItemsController {

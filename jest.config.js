@@ -8,6 +8,8 @@ module.exports = {
     'node_modules',
     'utils',
     'schemas',
+    'exception',
+    'errors',
     '__mocks__',
     '.mock.ts$',
     '.dto.ts$',

@@ -1,13 +1,13 @@
 import { Injectable } from '@nestjs/common'
 import { HttpService } from '@nestjs/axios'
-import { NullException } from '@/items/exception/items.exception'
+import { NullException, RecoveryDataException } from '../exception/items.exception'
 
 @Injectable()
 export class ItemsService {
   constructor(private readonly httpService: HttpService) {}
 
   async getSelectItemsPerPage(perPage: number): Promise<any> {
-    if (perPage === 0 || perPage === null) {
+    if (perPage == 0 || perPage == null) {
       return new NullException()
     }
     const itemsPerPage = 100
@@ -36,7 +36,7 @@ export class ItemsService {
       const response = await this.httpService.get(url + items + `?page=${page}`).toPromise()
       return response.data
     } catch (error) {
-      throw new Error(error)
+      return new RecoveryDataException()
     }
   }
 }

@@ -1,20 +1,5 @@
 {
   "compilerOptions": {
-    "baseUrl": "./",
-    "paths": {
-      "@/*": [
-        "./src/*"
-      ],
-      "@modules/*": [
-        "./src/modules/*"
-      ],
-      "@configuration": [
-        "./src/config/configuration"
-      ],
-      "@app": [
-        "./src/app/app.module"
-      ]
-    },
     "allowJs": true,
     "module": "commonjs",
     "declaration": true,

@@ -1,3 +1,3 @@
-import { HttpException } from '@nestjs/common';
+import { HttpException } from '@nestjs/common'
 
 export class BaseException extends HttpException {}
